@@ -1,6 +1,6 @@
 var money; 
 var income;
-
+let undone;
 var addExpenses;
 
 var deposit; 
