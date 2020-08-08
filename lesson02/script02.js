@@ -1,4 +1,4 @@
-let money = 13;
+let money = 30000;
 let income = ('ноготочки');
 let addExpenses = 'кОммуНалка, интернет, проезд';
 let deposit = true;
@@ -19,7 +19,7 @@ let low = addExpenses.toLowerCase();
 console.log(low.split(' '));
 
 //Объявить переменную budgetDay и присвоить дневной бюджет (доход за месяц / 30)
-let budgetDay = (mission/period)/30;
+let budgetDay = (money/30);
 //Вывести в консоль budgetDay
 console.log(budgetDay);
 
