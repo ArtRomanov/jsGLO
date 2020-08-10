@@ -46,12 +46,12 @@ let amount2 = +prompt('Во сколько это обойдется?');
 
 //Вычислить бюджет на месяц, учитывая обязательные расходы, сохранить в новую переменную budgetMonth
 //и вывести результат в консоль
-let budgetMonth = amount1+amount2;
+let budgetMonth = money-(amount1+amount2);
 console.log('Бюджет на месяц: '+budgetMonth);
 
 //Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель mission, вывести в консоль,
 //округляя в большую сторону (методы объекта Math в помощь)
-let time = Math.ceil(mission/(money-budgetMonth));
+let time = Math.ceil(mission/budgetMonth);
 console.log('Цель будет достигнута за: '+time);
 
 //Поправить budgetDay учитывая бюджет на месяц, а не месячный доход.
