@@ -105,7 +105,7 @@ let accumulatedMonth = getAccumulatedMonth();
 // Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель,
 // зная результат месячного накопления (accumulatedMonth) и возвращает результат
 let getTargetMonth = function(){
-    return mission/accumulatedMonth;
+    return Math.ceil(mission/accumulatedMonth);
 };
 console.log('Цель будет достигнута за '+getTargetMonth()+' месяцев'+' (getTargetMonth)');
 
