@@ -65,12 +65,20 @@ deposit = confirm('Есть ли у вас депозит в банке?');
 //Добавить проверку что введённые данные являются числом, которые мы получаем на вопрос
 //'Во сколько это обойдется?’ в функции  getExpensesMonth
 let sum;
+let expenses =[];
+let i =0;
+let result=0;
 let getExpensesMonth = function(){
-    // for(let i=0;i<2;i++){}
-    do{
-        sum= +prompt('Во сколько это обойдется?');
-    } while(!isNumber(sum));
-return sum;
+       for (let i=0;i<2;i++){
+        expenses[i] = prompt('Введите обязательную статью расходов?');
+        do{
+        sum = prompt('Во сколько это обойдется?');
+            if(isNumber(sum)){
+                result+= +sum;
+            }
+        }while(!isNumber(sum));
+    }
+return result;
 };
 
 let expensesAmount=getExpensesMonth();
