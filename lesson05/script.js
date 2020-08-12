@@ -13,7 +13,8 @@ let isNumber = function(n){
 };
 
 let start = function(){
-    do { money = +prompt('Ваш месячный доход?');
+    do {
+         money = prompt('Ваш месячный доход?');
 }
     while(!isNumber(money));
 return money;
