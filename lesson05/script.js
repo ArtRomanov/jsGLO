@@ -1,15 +1,30 @@
 'use strict';
-let money = 30000;
+let money;
 let income = ('ноготочки');
 let addExpenses = 'кОммуНалка, интернет, проезд';
 let deposit = true;
 let mission = 1000000;
 let period = 12;
 
+// Задание №5
+// Переписать функцию start циклом do while
+let isNumber = function(n){
+    return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+let start = function(){
+    do { money = +prompt('Ваш месячный доход?');
+}
+    while(!isNumber(money));
+return money;
+};
+
+console.log(start()+ ' ЗАДАНИЕ №5');
+
 // Вывести в консоль тип данных значений переменных money, income, deposit;
 //Вызовы функции showTypeOf (Задание №4)
 let showTypeOf = function(data){
-    console.log(data, typeof data + ' (showTypeOf)');
+    console.log(data, typeof data);
 };
 showTypeOf(money);
 showTypeOf(income);
@@ -29,43 +44,38 @@ let budgetDay = (money/30);
 //Вывести в консоль budgetDay
 //console.log(budgetDay);
 
-// Задание №3
-// Спрашиваем у пользователя “Ваш месячный доход?” и результат сохраняем в переменную money
-money = +prompt('Ваш месячный доход?',30000);
 
 //Спросить у пользователя “Перечислите возможные расходы за рассчитываемый период через запятую”
 // сохранить в переменную addExpenses
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'молоко, хлеб, макбук');
 
-console.log(addExpenses.split('  ') + ' (addExpenses)');
+console.log(addExpenses.split('  '));
 
 //Спросить у пользователя “Есть ли у вас депозит в банке?” и сохранить данные в переменной deposit 
 //(булево значение true/false)
 deposit = confirm('Есть ли у вас депозит в банке?');
 
-// Спросить у пользователя по 2 раза каждый вопрос и записать ответы в разные переменные 
-// “Введите обязательную статью расходов?” (например expenses1, expenses2)
-// “Во сколько это обойдется?” (например amount1, amount2)
-// в итоге 4 вопроса и 4 разные переменных
-let expenses1 = prompt('Введите обязательную статью расходов?');
-let amount1 = +prompt('Во сколько это обойдется?', 10000);
-let expenses2 = prompt('Введите обязательную статью расходов?');
-let amount2 = +prompt('Во сколько это обойдется?', 10000);
 
-//Вычислить бюджет на месяц, учитывая обязательные расходы, сохранить в новую переменную budgetMonth
-//и вывести результат в консоль
+// let expenses1 = prompt('Введите обязательную статью расходов?');
+// let amount1 = +prompt('Во сколько это обойдется?', 10000);
+// let expenses2 = prompt('Введите обязательную статью расходов?');
+// let amount2 = +prompt('Во сколько это обойдется?', 10000);
 
-// let budgetMonth = money-(amount1+amount2);
-// console.log('Бюджет на месяц: '+budgetMonth);
+// Задание №5
+//Добавить проверку что введённые данные являются числом, которые мы получаем на вопрос
+//'Во сколько это обойдется?’ в функции  getExpensesMonth
+let sum;
+let getExpensesMonth = function(){
+    // for(let i=0;i<2;i++){}
+    do{
+        sum= +prompt('Во сколько это обойдется?');
+    } while(!isNumber(sum));
+return sum;
+};
 
-//Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель mission, вывести в консоль,
-//округляя в большую сторону (методы объекта Math в помощь)
+let expensesAmount=getExpensesMonth();
 
-// let time = Math.ceil(mission/budgetMonth);
-// console.log('Цель будет достигнута за: '+time);
-
-//Поправить budgetDay учитывая бюджет на месяц, а не месячный доход.
-//Вывести в консоль  округлив в меньшую сторону 
+console.log('Сумма всех обязательных расходов за месяц: '+expensesAmount+' ЗАДАНИЕ №5');
 
 
 // Написать конструкцию условий (расчеты приведены в рублях)	
@@ -85,30 +95,31 @@ if (budgetDay>=1200){
     return('Что то пошло не так');
 }
 };
-console.log(getStatusIncome()+' (getStatusIncome)');
+console.log(getStatusIncome());
 
-// Задание №4
-//Объявить функцию getExpensesMonth. Функция возвращает сумму всех обязательных расходов за месяц
-let getExpensesMonth = function(){
-    return amount1+amount2;
-};
-console.log('Сумма всех обязательных расходов за месяц: '+getExpensesMonth()+' (getExpensesMonth)');
+
 
 //Объявить функцию getAccumulatedMonth. Функция возвращает Накопления за месяц (Доходы минус расходы)
 let getAccumulatedMonth = function(){
-   return money-(amount1+amount2);
+   return money-(expensesAmount);
 };
 
 //Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth 
 let accumulatedMonth = getAccumulatedMonth();
 
-// Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель,
-// зная результат месячного накопления (accumulatedMonth) и возвращает результат
+// Задание №5
+// Если getTargetMonth возвращает нам отрицательное значение, то вместо “Цель будет достигнута”
+//необходимо выводить “Цель не будет достигнута”
 let getTargetMonth = function(){
-    return Math.ceil(mission/accumulatedMonth);
+let target=Math.ceil(mission/accumulatedMonth);
+    if(target<0){
+        return('Цель не будет достигнута');
+    } else {
+        return('Цель будет достигнута за '+ target +' месяцев');
+    }
 };
-console.log('Цель будет достигнута за '+getTargetMonth()+' месяцев'+' (getTargetMonth)');
+console.log(getTargetMonth() + ' ЗАДАНИЕ №5');
 
 //budgetDay высчитываем исходя из значения месячного накопления (accumulatedMonth)
 budgetDay = ((money-accumulatedMonth)/30);
-console.log('Бюджет на день: ' + Math.floor(budgetDay)+' (budgetDay)');
+console.log('Бюджет на день: ' + Math.floor(budgetDay));
