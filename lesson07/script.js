@@ -46,7 +46,6 @@ let appData ={
     expensesMonth:0
 };
 appData.asking();
-console.log(appData);
 
 
 appData.getExpensesMonth = function(){
@@ -96,5 +95,5 @@ appData.getStatusIncome = function(){
 // Используя цикл for in для объекта (appData), вывести в консоль сообщение 
 // "Наша программа включает в себя данные: " (вывести все свойства и значения)
 for(let key in appData){
-    console.log("Наша программа включает в себя данные: Ключ " + key + ' ' + appData[key]);
+    console.log("Наша программа включает в себя данные: Key: " + key + ' Proper: ' + appData[key]);
 }
