@@ -17,28 +17,27 @@ let input = document.querySelectorAll('.additional_income-item');
 // Каждый элемент в правой части программы через класс, которые имеют в имени класса "-value", начиная с 
 // class="budget_day-value" и заканчивая class="target_month-value">
 let rightSide = document.querySelector('.result');
-let rightElemsValue1 = rightSide.querySelectorAll('.result-total')[0];
-let rightElemsValue2 = rightSide.querySelectorAll('.result-total')[1];
-let rightElemsValue3 = rightSide.querySelectorAll('.result-total')[2];
-let rightElemsValue4 = rightSide.querySelectorAll('.result-total')[3];
-let rightElemsValue5 = rightSide.querySelectorAll('.result-total')[4];
-let rightElemsValue6 = rightSide.querySelectorAll('.result-total')[5];
-let rightElemsValue7 = rightSide.querySelectorAll('.result-total')[6];
+let budgetMonth = rightSide.querySelector('.budget_month-value');
+let budgetDay = rightSide.querySelector('.budget_day-value');
+let expensesMonth = rightSide.querySelector('.expenses_month-value');
+let addIncomeSum = rightSide.querySelector('.additional_income-value');
+let addExpensesSum = rightSide.querySelector('.additional_expenses-value');
+let incomePeriod = rightSide.querySelector('.income_period-value');
+let targetMonth = rightSide.querySelector('.target_month-value');
 
 
 // Оставшиеся поля через querySelector каждый в отдельную переменную:
 // поля ввода (input) с левой стороны и не забудьте про range.
 let leftSide = document.querySelector('.data');
-let leftSideElemsValue1 = leftSide.querySelectorAll('input')[0];
-let leftSideElemsValue2 = leftSide.querySelectorAll('input')[1];
-let leftSideElemsValue3 = leftSide.querySelectorAll('input')[2];
-let leftSideElemsValue4 = leftSide.querySelectorAll('input')[3];
-let leftSideElemsValue5 = leftSide.querySelectorAll('input')[4];
-let leftSideElemsValue6 = leftSide.querySelectorAll('input')[5];
-let leftSideElemsValue7 = leftSide.querySelectorAll('input')[6];
-let leftSideElemsValue8 = leftSide.querySelectorAll('input')[7];
-let leftSideElemsValue9 = leftSide.querySelectorAll('input')[8];
-let leftSideElemsValue10 = leftSide.querySelectorAll('input')[9];
-let leftSideElemsValue11 = leftSide.querySelectorAll('input')[10];
-let leftSideElemsValue12 = leftSide.querySelectorAll('input')[11];
-let leftSideElemsValue13 = leftSide.querySelectorAll('input')[12];
+let salaryAmount = leftSide.querySelector('.salary-amount');
+let incomeTitle = leftSide.querySelector('.income-items .income-title');
+let incomeAmount = leftSide.querySelector('.income-amount');
+let addIncome1 = leftSide.querySelectorAll('.additional_income .additional_income-item')[0];
+let addIncome2 = leftSide.querySelectorAll('.additional_income .additional_income-item')[1];
+let expensesTitle = leftSide.querySelector('.expenses-title');
+let expensesAmount = leftSide.querySelector('.expenses-amount');
+let depositCheckbox = leftSide.querySelector('#deposit-check');
+let depositAmount = leftSide.querySelector('.deposit-amount');
+let depositPercent = leftSide.querySelector('.deposit-percent');
+let targetAmount = leftSide.querySelector('.target-amount');
+let periodSelect = leftSide.querySelector('.period-select');
