@@ -190,7 +190,7 @@ let appData ={
         let periodAmount = document.querySelector('.period-amount');
         periodAmount.textContent= periodSelect.value;
     },
-    dis: function(){
+    disabledButton: function(){
         if (salaryAmount.value.trim()!==''){
             start.disabled=false;
         }else{
@@ -205,4 +205,4 @@ start.addEventListener('click',appData.start);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click',appData.addIncomeBlock); 
 periodSelect.addEventListener('input',appData.range); 
-salaryAmount.addEventListener('input',appData.dis);
+salaryAmount.addEventListener('input',appData.disabledButton);
