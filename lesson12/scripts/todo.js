@@ -7,7 +7,7 @@ const todoCompleted = document.querySelector('.todo-completed');
 
 let todoData = [];
 
-// проверяете, если в localStorage что-то есть, то render()
+
 if (localStorage.getItem('thingsToDo')) {
 	 todoData = JSON.parse(localStorage.getItem('thingsToDo'));
  	render();
