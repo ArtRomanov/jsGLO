@@ -34,7 +34,7 @@ periodSelect = leftSide.querySelector('.period-select'),
 additionalExpensesItem = leftSide.querySelector('.additional_expenses-item'),
 incomeItems = document.querySelectorAll('.income-items'),
 periodAmount = document.querySelector('.period-amount'),
-cancelButn = document.getElementById('cancel'),
+resetButn = document.getElementById('cancel'),
 main = document.querySelector('.main');
 
 
@@ -69,7 +69,7 @@ let appData ={
         this.showResult();
         
         start.style.display='none';
-        cancelButn.style.display='block';
+        resetButn.style.display='block';
     },
     showResult:function(){
         budgetMonthValue.value=this.budgetMonth;
@@ -202,8 +202,8 @@ let appData ={
             item.disabled=false;
         }
         );
-        
-        appData.budgetMonth=0;
+
+       
         periodSelect.value=1;
         periodAmount.textContent=1;
 
@@ -221,7 +221,19 @@ let appData ={
         }
         
         start.style.display='block';
-        cancelButn.style.display='none';
+        resetButn.style.display='none';
+        this.budget = 0;
+        this.income = {};
+        this.incomeMonth = 0;
+        this.addIncome = [];
+        this.expenses = {};
+        this.addExpenses = [];
+        this.deposit = false;
+        this.depositPercent = 0;
+        this.depositMoney = 0;
+        this.budgetDay = 0;
+        this.budgetMonth = 0;
+        this.expensesMonth = 0;
         
     },
     blockInputs:function(){
@@ -244,7 +256,7 @@ periodSelect.addEventListener('input', function () {
 	periodAmount.textContent = periodSelect.value;
 }); 
 salaryAmount.addEventListener('input',appData.disabledButton);
-cancelButn.addEventListener('click',appData.reset);
+resetButn.addEventListener('click',appData.reset.bind(appData));
 
 
         
