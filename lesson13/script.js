@@ -78,10 +78,12 @@ let appData ={
         additionalExpensesValue.value=this.addExpenses.join(', ');
         additionaIncomeValue.value=this.addIncome.join(', ');
         targetMonthValue.value=this.getTargetMonth();
-        incomePeriodValue.value=this.calcSavedMoney();
+        
+        
         periodSelect.addEventListener('input', function () {
 			incomePeriodValue.value = appData.calcSavedMoney();
-		}); 
+        }); 
+        incomePeriodValue.value=this.calcSavedMoney();
 
         
     },
@@ -194,8 +196,33 @@ let appData ={
         }
     },
     reset:function(){
-        salaryAmount.value='';
-        window.location.reload();
+        let inputs = document.querySelectorAll('input');
+        inputs.forEach(function(item){
+            item.value=null;
+            item.disabled=false;
+        }
+        );
+        
+        appData.budgetMonth=0;
+        periodSelect.value=1;
+        periodAmount.textContent=1;
+
+        if(expensesItems.length > 1){
+            for (let i=1;i<expensesItems.length;i++){
+                expensesItems[i].remove();
+            }
+            expensesPlus.style.display='block';
+        }
+        if(incomeItems.length > 1){
+            for (let i=1;i<incomeItems.length;i++){
+                incomeItems[i].remove();
+            }
+            incomePlus.style.display='block';
+        }
+        
+        start.style.display='block';
+        cancelButn.style.display='none';
+        
     },
     blockInputs:function(){
         let inputs = document.querySelectorAll('input');
