@@ -137,7 +137,6 @@ AppData.prototype.getIncome=function(){
         let cashIncome = item.querySelector('.income-amount').value;
         if(itemIncome!==''&&cashIncome!==''){
             _this.income[itemIncome]=cashIncome;
-            
         }
     });
 };
@@ -258,7 +257,7 @@ AppData.prototype.blockInputs=function(){
 periodSelect.disabled=false;
 };
 
-AppData.prototype.addEventListener=function(){
+AppData.prototype.eventListener=function(){
     const _this=this;
     start.addEventListener('click',this.start.bind(_this));
     start.addEventListener('click',this.blockInputs);
@@ -271,10 +270,8 @@ AppData.prototype.addEventListener=function(){
     salaryAmount.addEventListener('input',this.disabledButton);
     resetButn.addEventListener('click',this.reset.bind(_this));
 };
-AppData.prototype.addEventListener();
 const appData = new AppData();
-
-
+appData.eventListener();
 
 
 
