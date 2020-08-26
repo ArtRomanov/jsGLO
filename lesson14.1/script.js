@@ -20,7 +20,7 @@ DomElement.prototype.method=function(){
             
         }else if(this.selector.startsWith('#')){
             let elementParag = document.createElement('p');
-            elementParag.className=this.selector.substring(1);
+            elementParag.setAttribute('id',this.selector.substring(1));
             elementParag.style.cssText=`height: ${this.height}; width: ${this.width}; background: ${this.bg}`;
             elementParag.style.fontSize=this.fontSize;
             elementParag.textContent=this.selector.substring(1);
