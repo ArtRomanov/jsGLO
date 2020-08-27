@@ -83,8 +83,6 @@ start(){
 
 
 showResult(){
-    const _this = this;//псевдо-this
-
     budgetMonthValue.value=this.budgetMonth;
     budgetDayValue.value=this.budgetDay;
     expensesMonthValue.value=this.expensesMonth;
@@ -94,7 +92,7 @@ showResult(){
     
     
     periodSelect.addEventListener('input',  () => {
-        incomePeriodValue.value = _this.calcSavedMoney();
+        incomePeriodValue.value = this.calcSavedMoney();
     }); 
     incomePeriodValue.value=this.calcSavedMoney();
 
