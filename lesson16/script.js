@@ -252,7 +252,7 @@ changePercent(){
         depositPercent.style.display='inline-block';
         depositPercent.value='';
         depositPercent.addEventListener('input', function(){
-            if(!isNumber(depositPercent.value) || depositPercent.value<=0 || depositPercent.value>=100 ){
+            if(!isNumber(depositPercent.value) || depositPercent.value<=0 || depositPercent.value>100 ){
                 alert('Это банковский депозит - а не Уолл-стрит! Введи корректное значение от 0 до 100!');
                 depositPercent.value='';
                 start.disabled=true;
