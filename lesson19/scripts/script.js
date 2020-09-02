@@ -79,6 +79,7 @@ toggleMenu();
             });
         }); 
         popUpClose.addEventListener('click',()=>{
+            popUpContent.style='none';
             popup.style.display='none';
             count =0;
         });
