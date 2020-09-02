@@ -55,7 +55,7 @@ const btMenu = document.querySelector('.menu'),
 };
 toggleMenu();
 
-    let count=0;
+    
     //popup
 
     const togglePopup = () =>{
@@ -63,6 +63,7 @@ toggleMenu();
             popupBtn = document.querySelectorAll('.popup-btn'),
             popUpClose = document.querySelector('.popup-close'),
             popUpContent = document.querySelector('.popup-content');
+    let count=0;
     
         popupBtn.forEach((elem)=>{
             elem.addEventListener('click', function moveLeft(){
