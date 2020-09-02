@@ -86,18 +86,19 @@ const togglePopup = () =>{
             let target = event.target;
 
             if(target.classList.contains('popup-close')){
-
+                popUpContent.style='none';
                 popup.style.display='none';
-
+                
                     count =0;
             }else{
 
                 target = target.closest('.popup-content');
 
                 if(!target){
-
+                    popUpContent.style='none';
                     popup.style.display='none';
                     
+
                     count =0;
                 }
             }
