@@ -245,4 +245,37 @@ const slider = ()=>{
 };
 
 slider();
+
+//смена юзерпиков
+const imgChange = ()=>{
+    const commandPhotos = document.querySelectorAll('.command__photo');
+    let arrSrc=[];
+    for(let i=0;i<commandPhotos.length;i++){
+        arrSrc[i]=commandPhotos[i].getAttribute('src');
+    }
+    commandPhotos.forEach((item,i)=>{
+        let target = event.target;
+        item.addEventListener('mouseenter',(e)=>{
+                event.target.src= event.target.dataset.img;
+        });
+        item.addEventListener('mouseleave',(e)=>{
+                event.target.src=arrSrc[i];
+        });
+    });
+};
+imgChange();
+
+// ограничение ввода данных в калькуляторе
+const calcInput =()=>{
+    const calcBlock = document.getElementById('calc'),
+        inputs = calcBlock.querySelectorAll('input');
+
+    inputs.forEach((item)=>{
+        item.addEventListener('input',()=>{
+            item.value=item.value.replace(/[\D]/g,'');
+        });
+    });
+
+};
+calcInput();
 });
