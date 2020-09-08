@@ -288,8 +288,6 @@ const calc=(price=100)=>{
     calcDay = document.querySelector('.calc-day'),
     calcCount = document.querySelector('.calc-count'),
     totalValue = document.getElementById('total');
-    let timer;
-    let myReq;
 
     const countSum = () =>{
         let total = 0,
@@ -313,22 +311,16 @@ const calc=(price=100)=>{
             total = Math.ceil(price*typeValue*squareValue*countValue*dayValue);
 
         }
-        modalAnimation (totalValue, total, totalValue.textContent);
     };
 
     calcBlock.addEventListener('change', (event)=>{
         const target = event.target;
 
         if(target.matches('select')||target.matches('input')){
-            cancelAnimationFrame(myReq);
             countSum();
             
         }
-
-
     });
-
-   
 };
 calc(100);
 });
