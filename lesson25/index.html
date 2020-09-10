@@ -466,6 +466,32 @@
 
 
 	valid2.init();
+
+	const valid3 = new Validator({
+		selector: "#form3",
+		pattern: {
+			rusLang:/[а-яё]/gi
+		},
+		method: {
+			
+			'form3-name':[
+				['notEmpty'],
+				['pattern', 'rusLang'],
+			],
+			'form3-email':[
+				['notEmpty'],
+				['pattern', 'email'],
+			],
+			'form3-phone':[
+				['notEmpty'],
+				['pattern', 'phone'],
+			],
+		},
+		
+	})
+
+
+	valid3.init();
 </script>
 </body>
 </html>
