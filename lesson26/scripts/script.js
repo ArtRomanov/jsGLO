@@ -371,8 +371,11 @@ const sendForm =()=>{
     forms(document.getElementById('form3'));
 
     const statusMessage = document.createElement('div');
+    const preloadAnimation = document.createElement('div');
+   
+    
     statusMessage.style.cssText='font-size: 2rem; color: white;';
-        
+    
         //Функция для всех форм, по item вешается обработчик событий на каждую из них
     function forms(item){ 
 
@@ -389,27 +392,25 @@ const sendForm =()=>{
 
                     item.value=item.value.replace(/[^0-9\+]/, '');
 
-                }else if(item.name === 'user_name'){
+                }else if(item.name === 'user_name'|| item.name === 'user_message'){
 
                     item.value=item.value.replace(/[^а-яё ]/gi,'');
 
-                //Исправлена валидация поля ввода сообщения
-                }else if(item.name === 'user_message'){
-                    item.value=item.value.replace(/[^а-яё0-9?!:;,.`'"()#@+=_$№<>\][\{}*/\- ]/gi,'');
-                }
-                else if(item.name === 'user_email'){
+                }else if(item.name === 'user_email'){
 
                     item.value=item.value.replace(/[^a-z0-9\.@\.\_]/gi,'');
 
                 }
             });
         });
-        // \.\?\-\!\)\(\,\:
-        // /[^а-яё0-9 ]\p{P}-[()\-.]
+
 
         item.addEventListener('submit', (event) => {
             event.preventDefault();
             item.append(statusMessage);
+            item.append(preloadAnimation);
+
+            preloadAnimation.classList.add('spinner-grow', 'text-light');
             statusMessage.textContent = loadMessage;
 
             const formData = new FormData(item);
@@ -421,6 +422,7 @@ const sendForm =()=>{
 
             postData(body,
             ()=>{
+                preloadAnimation.classList.remove('spinner-grow');
                 statusMessage.textContent = successMessage;
             },
             (error)=>{
