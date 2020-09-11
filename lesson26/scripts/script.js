@@ -392,11 +392,16 @@ const sendForm =()=>{
 
                     item.value=item.value.replace(/[^0-9\+]/, '');
 
-                }else if(item.name === 'user_name'|| item.name === 'user_message'){
+                }else if(item.name === 'user_name'){
 
                     item.value=item.value.replace(/[^а-яё ]/gi,'');
 
-                }else if(item.name === 'user_email'){
+                }else if(item.name === 'user_message'){
+
+                    item.value=item.value.replace(/[^а-яё0-9.,;:!?@#/$№\-)(=`<>|}{}\+\]["'_*&^ ]/gi,'');
+
+                }
+                else if(item.name === 'user_email'){
 
                     item.value=item.value.replace(/[^a-z0-9\.@\.\_]/gi,'');
 
