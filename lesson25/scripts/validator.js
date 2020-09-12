@@ -46,8 +46,6 @@ class Validator{
         } else{
             console.warn('Необходимо передать id полей ввода и методы проверки этих полей');
         }
-        
-
         return true;
     }
 
@@ -66,21 +64,10 @@ class Validator{
     showError(elem){
     elem.classList.remove('success');    
     elem.classList.add('error');
-    if(elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')){
-        return;
     }
-    const errorDiv = document.createElement('div');
-    errorDiv.textContent = 'Ошибка в этом поле';
-    errorDiv.classList.add('validator-error');
-    elem.insertAdjacentElement('afterend', errorDiv);
-    }
-
     showSuccess(elem){
     elem.classList.remove('error');
     elem.classList.add('success');
-    if(elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')){
-        elem.nextElementSibling.remove();
-    }    
     }
     
     // к стилям добавил !important т.к. в css задано свойство border: none;
@@ -92,11 +79,6 @@ class Validator{
         }
         input.error{
             border: 2px solid red   !important
-        }
-        .validator-error{
-            font-size: 12px;
-            font-family:sans-serif;
-            color: red;
         }
         `;
         document.head.append(style);
@@ -110,8 +92,5 @@ class Validator{
         if(!this.pattern.email){
             this.pattern.email=/^\w.+@\w+\.\w{2,}$/;
         }
-
-        
-
     }
 }

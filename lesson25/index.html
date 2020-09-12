@@ -416,12 +416,12 @@
 	const valid = new Validator({
 		selector: "#form1",
 		pattern: {
-			rusLang:/[а-яё]/gi
+			name:/[а-яё]/gi
 		},
 		method: {
 			'form1-name':[
 				['notEmpty'],
-				['pattern', 'rusLang'],
+				['pattern', 'name'],
 			],
 			'form1-email':[
 				['notEmpty'],
@@ -439,13 +439,14 @@
 	const valid2 = new Validator({
 		selector: "#form2",
 		pattern: {
-			rusLang:/[а-яё]/gi
+			name:/[а-яё]/gi,
+			message:/[а-яё0-9 .,;:!?@#/$№\-)(=`<>|}{}\+\]["'_*&^ ]/gi
 		},
 		method: {
 			
 			'form2-name':[
 				['notEmpty'],
-				['pattern', 'rusLang'],
+				['pattern', 'name'],
 			],
 			'form2-email':[
 				['notEmpty'],
@@ -457,7 +458,7 @@
 			],
 			'form2-message':[
 				['notEmpty'],
-				['pattern', 'rusLang'],
+				['pattern', 'message'],
 			],
 
 		},
@@ -470,13 +471,13 @@
 	const valid3 = new Validator({
 		selector: "#form3",
 		pattern: {
-			rusLang:/[а-яё]/gi
+			name:/[а-яё]/gi
 		},
 		method: {
 			
 			'form3-name':[
 				['notEmpty'],
-				['pattern', 'rusLang'],
+				['pattern', 'name'],
 			],
 			'form3-email':[
 				['notEmpty'],
