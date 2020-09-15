@@ -425,15 +425,14 @@ const sendForm =()=>{
                 body[key]=val;
             });
 
-            postData(body,
-            ()=>{
+            postData(body)
+            .then(()=>{
                 preloadAnimation.classList.remove('spinner-grow');
                 statusMessage.textContent = successMessage;
-            },
-            (error)=>{
-                statusMessage.textContent = errorMessage;
-                console.error(error);
-            });
+            })
+            .catch(error =>{statusMessage.textContent = errorMessage;
+                console.error(error);}
+            );
 
             //Сброс инпутов
             inputsArr.forEach((item)=>{
@@ -442,9 +441,10 @@ const sendForm =()=>{
     });
     }
 
-    const postData = (body, outputData, errorData) => {
+    const postData = (body) => {
 
-        const request = new XMLHttpRequest();
+        return new Promise((resolve,reject)=>{
+            const request = new XMLHttpRequest();
 
         request.addEventListener('readystatechange', ()=>{
             if(request.readyState !== 4){
@@ -452,9 +452,10 @@ const sendForm =()=>{
             }
 
             if(request.status === 200){
-                outputData();
+
+                resolve();
             } else {
-                errorData(request.status);
+                reject(request.status);
             }
         });
 
@@ -464,6 +465,9 @@ const sendForm =()=>{
        
         request.send(JSON.stringify(body));
 
+        });
+
+        
     };
 
 };
