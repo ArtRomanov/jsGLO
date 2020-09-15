@@ -426,15 +426,18 @@ const sendForm =()=>{
             });
 
             postData(body)
-            .then(()=>{
+            .then((response)=>{
+                if(response.status !==200){
+                    throw new Error('status network not 200');
+                }
                 preloadAnimation.classList.remove('spinner-grow');
                 statusMessage.textContent = successMessage;
             })
-            .catch(error =>{statusMessage.textContent = errorMessage;
-                console.error(error);}
-            );
+            .catch(error =>{
+                statusMessage.textContent = errorMessage;
+                console.error(error);
+            });
 
-            //Сброс инпутов
             inputsArr.forEach((item)=>{
                 item.value='';
             });
@@ -443,31 +446,13 @@ const sendForm =()=>{
 
     const postData = (body) => {
 
-        return new Promise((resolve,reject)=>{
-            const request = new XMLHttpRequest();
-
-        request.addEventListener('readystatechange', ()=>{
-            if(request.readyState !== 4){
-                return;
-            }
-
-            if(request.status === 200){
-
-                resolve();
-            } else {
-                reject(request.status);
-            }
-        });
-
-        request.open('post', './server.php');
-
-        request.setRequestHeader('Content-Type', 'application/json');
-       
-        request.send(JSON.stringify(body));
-
-        });
-
-        
+       return fetch('./server.php',{
+           method: 'POST',
+           headers:{
+            'Content-Type': 'application/json'
+           },
+           body: JSON.stringify(body)
+       }); 
     };
 
 };
