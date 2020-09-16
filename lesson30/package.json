@@ -1,22 +1,14 @@
 {
-  "name": "easy",
+  "name": "lesson29",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArtRomanov/jsGLO.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ArtRomanov/jsGLO/issues"
-  },
-  "homepage": "https://github.com/ArtRomanov/jsGLO#readme",
   "devDependencies": {
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
