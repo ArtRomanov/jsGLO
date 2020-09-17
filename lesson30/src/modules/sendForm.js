@@ -1,5 +1,5 @@
-'use strict';
-const sendForm =()=>{
+const sendForm = () => {
+
     const errorMessage = 'Что-то пошло не так...',
         loadMessage = 'Загрузка...',
         successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
@@ -10,45 +10,49 @@ const sendForm =()=>{
 
     const statusMessage = document.createElement('div');
     const preloadAnimation = document.createElement('div');
-   
-    
-    statusMessage.style.cssText='font-size: 2rem; color: white;';
-    
-        //Функция для всех форм, по item вешается обработчик событий на каждую из них
-    function forms(item){ 
 
-        let inputsArr = [...item.elements].filter(item => {
-            return item.tagName.toLowerCase() !== 'button' &&
-            item.type !== 'button'; 
-        });
+
+    statusMessage.style.cssText = 'font-size: 2rem; color: white;';
+
+    //Функция для всех форм, по item вешается обработчик событий на каждую из них
+    function forms(item) {
+
+        const inputsArr = [...item.elements].filter(item => item.tagName.toLowerCase() !== 'button' &&
+            item.type !== 'button');
 
         //Валидация инпутов
-        inputsArr.forEach((item)=>{
-            item.addEventListener('input',()=>{
-                
-                if(item.name === 'user_phone' ){
+        inputsArr.forEach(item => {
+            item.addEventListener('input', () => {
 
-                    item.value=item.value.replace(/[^0-9\+]/, '');
+                if (item.name === 'user_phone') {
 
-                }else if(item.name === 'user_name'){
+                    item.value = item.value.replace(/[^0-9+]/, '');
 
-                    item.value=item.value.replace(/[^а-яё ]/gi,'');
+                } else if (item.name === 'user_name') {
 
-                }else if(item.name === 'user_message'){
+                    item.value = item.value.replace(/[^а-яё ]/gi, '');
 
-                    item.value=item.value.replace(/[^а-яё0-9.,;:!?@#/$№\-)(=`<>|}{}\+\]["'_*&^ ]/gi,'');
+                } else if (item.name === 'user_message') {
 
-                }
-                else if(item.name === 'user_email'){
+                    item.value = item.value.replace(/[^а-яё0-9.,;:!?@#/$№\-)(=`<>|}{}+\]["'_*&^ ]/gi, '');
 
-                    item.value=item.value.replace(/[^a-z0-9\.@\.\_]/gi,'');
+                } else if (item.name === 'user_email') {
+
+                    item.value = item.value.replace(/[^a-z0-9.@_]/gi, '');
 
                 }
             });
         });
+        const postData = body => fetch('./server.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
 
 
-        item.addEventListener('submit', (event) => {
+        item.addEventListener('submit', event => {
             event.preventDefault();
             item.append(statusMessage);
             item.append(preloadAnimation);
@@ -57,41 +61,30 @@ const sendForm =()=>{
             statusMessage.textContent = loadMessage;
 
             const formData = new FormData(item);
-            let body = {};
-           
-            formData.forEach((val,key)=>{
-                body[key]=val;
+            const body = {};
+
+            formData.forEach((val, key) => {
+                body[key] = val;
             });
 
             postData(body)
-            .then((response)=>{
-                if(response.status !==200){
-                    throw new Error('status network not 200');
-                }
-                preloadAnimation.classList.remove('spinner-grow');
-                statusMessage.textContent = successMessage;
-            })
-            .catch(error =>{
-                statusMessage.textContent = errorMessage;
-                console.error(error);
-            });
+                .then(response => {
+                    if (response.status !== 200) {
+                        throw new Error('status network not 200');
+                    }
+                    preloadAnimation.classList.remove('spinner-grow');
+                    statusMessage.textContent = successMessage;
+                })
+                .catch(error => {
+                    statusMessage.textContent = errorMessage;
+                    console.error(error);
+                });
 
-            inputsArr.forEach((item)=>{
-                item.value='';
+            inputsArr.forEach(item => {
+                item.value = '';
             });
-    });
+        });
     }
 
-    const postData = (body) => {
-
-       return fetch('./server.php',{
-           method: 'POST',
-           headers:{
-            'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(body)
-       }); 
-    };
-
 };
-export default sendForm; 
+export default sendForm;
