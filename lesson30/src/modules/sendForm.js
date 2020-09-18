@@ -66,7 +66,6 @@ const sendForm = () => {
             formData.forEach((val, key) => {
                 body[key] = val;
             });
-
             postData(body)
                 .then(response => {
                     if (response.status !== 200) {
@@ -76,6 +75,7 @@ const sendForm = () => {
                     statusMessage.textContent = successMessage;
                 })
                 .catch(error => {
+                    preloadAnimation.classList.remove('spinner-grow');
                     statusMessage.textContent = errorMessage;
                     console.error(error);
                 });
@@ -83,6 +83,10 @@ const sendForm = () => {
             inputsArr.forEach(item => {
                 item.value = '';
             });
+            setTimeout(() => {
+                statusMessage.textContent = '';
+            }, 8000);
+
         });
     }
 

@@ -2,13 +2,15 @@ const togglePopup = () => {
 
     const   popup = document.querySelector('.popup'),
         popupBtn = document.querySelectorAll('.popup-btn'),
-        popUpContent = document.querySelector('.popup-content');
+        popUpContent = document.querySelector('.popup-content'),
+        menu = document.querySelector('menu');
     let count = 0;
 
     popupBtn.forEach(elem => {
         elem.addEventListener('click', function moveLeft() {
             count++;
             popup.style.display = 'block';
+            menu.classList.remove('active-menu');
 
             if (document.documentElement.clientWidth > 768) {
 
@@ -32,7 +34,6 @@ const togglePopup = () => {
 
             count = 0;
         } else {
-            console.log(target);
             target = target.closest('.popup-content');
 
             if (!target) {
