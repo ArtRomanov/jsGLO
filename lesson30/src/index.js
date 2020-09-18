@@ -20,7 +20,7 @@ import calc from './modules/calc';
 import sendForm from './modules/sendForm';
 
 
-countTimer('18 september 2020 10:10:00');
+countTimer('20 september 2020 20:10:00');
 
 //меню, исправлены обработчики к задание по уроку №20
 toggleMenu();
